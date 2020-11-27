@@ -1,18 +1,33 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <HelloWorld :msg="hello" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup="props" lang="ts">
+import { defineComponent, defineProps } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     HelloWorld
+  },
+  props: {
+    test: {
+      type: String,
+      required: true,
+    }
+  },
+  setup(props) {
+    const hello: string = props.test;
+
+    return {
+      hello
+    }
   }
 });
+
+
 </script>
 
 <style lang="scss">
